@@ -1,0 +1,25 @@
+<html ng-app="twitterbot">
+<head>
+	<meta charset="utf-8"/>
+	<!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.2/angular.min.js"></script>-->
+	<!--<script src="app.js"></script>-->
+	<script src="bundle.js"></script>
+</head>
+<body ng-controller="LastTweets">
+	<form name="formSeekUser">
+		Screen name twitter:
+		<input type="text" name="userName" ng-model="userName" required>
+		<button ng-click="seekUser();">Search User</button>
+	</form>
+	
+	<ul>
+		<li ng-repeat="tweet in tweets">
+			<p>
+				<b>Author: </b>{{tweet.user.name}}<br/>
+				<b>Text tweet: </b>{{tweet.text}}
+		 	</p>
+		</li>
+	</ul>
+
+</body>
+</html>
