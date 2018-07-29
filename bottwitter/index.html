@@ -4,22 +4,44 @@
 	<!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.2/angular.min.js"></script>-->
 	<!--<script src="app.js"></script>-->
 	<script src="bundle.js"></script>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	<link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+	<script>
+		function onclicktweet() {
+		    var x = document.getElementById("tweetcont");
+		    if (x.style.display === "none") {
+		        x.style.display = "block";
+		    } else {
+		        x.style.display = "none";
+		    }
+		} 
+	</script>
 </head>
 <body ng-controller="LastTweets">
-	<form name="formSeekUser">
-		Screen name twitter:
-		<input type="text" name="userName" ng-model="userName" required>
-		<button ng-click="seekUser();">Search User</button>
-	</form>
-	
-	<ul>
+	<div class="marginst">
+		<form name="formSeekUser">
+			Screen name twitter:
+			<input type="text" name="userName" ng-model="userName" required>
+			<button ng-click="seekUser();">Search User</button>
+		</form>
+	</div>
+	<!--<ul>
 		<li ng-repeat="tweet in tweets">
 			<p>
 				<b>Author: </b>{{tweet.user.name}}<br/>
 				<b>Text tweet: </b>{{tweet.text}}
 		 	</p>
 		</li>
-	</ul>
+	</ul>-->
+	<div class="rounded tweetstyle" ng-repeat="tweet in tweets" onclick="onclicktweet()">
+		<p class="marginst">
+			<b>Author: </b>{{tweet.user.name}}<br/>
+			<b>Text tweet: </b>{{tweet.text}}
+			<div id="tweetcont" class="tweetstylehidd">
+				<b>Id: </b>{{tweet.id}}
+			</div>
+	 	</p>
+	</div>
 
 </body>
 </html>
